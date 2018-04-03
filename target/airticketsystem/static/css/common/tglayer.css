@@ -1,0 +1,42 @@
+.tglayer_container {
+}
+.tglayer_mirror {
+    opacity: 0.6;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: black;
+}
+
+.tglayer_con {
+	position: absolute;
+	z-index:99999999;
+}
+.tglayer_img_hd {
+	position: relative;
+	width: 900px;
+	height: 508px;
+}
+
+.tglayer_close_btn {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 120px;
+	height: 120px;
+	background-color: transparent;
+	opacity: 0.1;
+	z-index:999999999;
+	cursor: pointer;
+}
+
+.tglayer_con img{
+	position: absolute;
+	width: 900px;
+	height: 508px;
+}

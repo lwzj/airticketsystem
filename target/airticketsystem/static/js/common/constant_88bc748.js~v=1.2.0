@@ -1,0 +1,1 @@
+var Constant={};Constant.PASSPORT_HOST="http://passport.kaochong.com",Constant.BBS_HOST="http://bbs.kaochong.com/api/uc.php";var PayWay={};PayWay.ALIPAY=1,PayWay.PC_WEIXIN=4,PayWay.WEIXIN=5;

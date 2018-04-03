@@ -1,0 +1,240 @@
+@charset "UTF-8"; 
+
+body {
+	background: #f9f9f9
+}
+
+.list_main {
+	margin: 0 auto;
+	z-index: 1
+}
+
+.datalist-con {
+	margin-right: -20px
+}
+
+.list_course_show {
+	width: 314px;
+	height: 373px;
+	margin-right: 20px;
+	float: left;
+	margin-bottom: 42px;
+	position: relative
+}
+
+.list_course_show:hover {
+	box-shadow: 0 2px 10px #e5e3e3
+}
+
+.list_course_show_right {
+	margin-right: 0
+}
+
+.course_con {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	transition: all .2s ease;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: bottom
+}
+
+.course_con:hover {
+	background-size: 104% 104%
+}
+
+.supernatant {
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(62, 62, 66, .5));
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	z-index: 2
+}
+
+.course_show_img {
+	padding: 20px 0 22px 16px;
+	z-index: 2;
+	position: relative;
+	height: 278px;
+	overflow: hidden
+}
+
+.course_teacher_name {
+	padding: 0 4px;
+	border-radius: 2px;
+	height: 20px;
+	line-height: 20px;
+	background: #fec231;
+	color: #4b3c56;
+	display: inline-block;
+	margin-bottom: 8px
+}
+
+.course_introduction {
+	margin-top: 4px;
+	width: 360px;
+	min-height: 1px;
+	line-height: 28px;
+	color: #4b3c56;
+	height: 84px;
+	text-align: justify
+}
+
+.course_class {
+	color: #fff;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 34px;
+	position: absolute;
+	left: 16px;
+	bottom: 46px
+}
+
+.course_time {
+	color: #fff;
+	font-size: 14px;
+	line-height: 14px;
+	position: absolute;
+	left: 16px;
+	bottom: 22px
+}
+
+.schooltime {
+	margin-right: 30px
+}
+
+.sell_status {
+	padding: 26px 16px;
+	background: #f4f4f6;
+	font-size: 14px;
+	display: inline-block;
+	width: 100%;
+	border: 1px solid #dfe2e2;
+	border-top: 0
+}
+
+.sell_status li {
+	line-height: 14px;
+	color: #6e6e7e;
+	width: 100%;
+	height: 14px
+}
+
+.sell_status .course_sell_price {
+	margin-bottom: 18px
+}
+
+.course_price {
+	font-weight: 700;
+	color: #4b3c56
+}
+
+.stop_sell.course_price {
+	color: #dcdce2;
+	position: relative
+}
+
+.stop_sell.course_price p {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	color: #13131f;
+	font-size: 16px;
+	font-weight: 400
+}
+
+.course_price span {
+	font-size: 30px
+}
+
+.course_price .free {
+	font-size: 24px
+}
+
+.list_course_show_first {
+	width: 648px
+}
+
+.list_course_show_first .supernatant {
+	background: #fec231;
+	opacity: 1
+}
+
+.list_course_show_first .course_show_img {
+	width: 100%
+}
+
+.list_course_show_first .course_teacher_name {
+	background: #4b3c56;
+	color: #fec231
+}
+
+.list_course_show_first .course_class {
+	color: #4b3c56 !important
+}
+
+.list_course_show_first .course_time {
+	color: #4b3c56 !important
+}
+
+.courselist_teacher_intro {
+	height: 204px;
+	background-color: #fff;
+	border-bottom: 1px solid #dfe2e2
+}
+
+.courselist_teacher_intro_placehder {
+	height: 204px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 1px
+}
+
+.courselist_teacher_intro_img_hd {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 35px
+}
+
+.courselist_teacher_intro_des_hd {
+	display: inline-block;
+	vertical-align: middle;
+	width: 80%
+}
+
+.courselist_teacher_intro_img_hd img {
+	width: 96px;
+	height: 96px
+}
+
+.cltid_name {
+	color: #4b3c56;
+	font-size: 18px;
+	font-weight: 600;
+	margin-right: 10px
+}
+
+.cltid_shortintro {
+	font-size: 14px;
+	color: #4b3c56
+}
+
+.cl_t_i_d_des p {
+	font-size: 12px;
+	color: #4b3c56;
+	line-height: 18px;
+	margin-top: 15px
+}
+
+.course_empty {
+	background: url(./././imgs/ic_mylesson_logo.png) no-repeat;
+	background-position: 606px 78px;
+	text-align: center;
+	font-size: 16px;
+	color: #9999ac;
+	line-height: 247px
+}
