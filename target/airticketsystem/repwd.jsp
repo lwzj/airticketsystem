@@ -40,7 +40,7 @@
             var p = $("#password").val();
             var data =  "{'password':'"+p+"'}";
             $.ajax({
-                url : "http://localhost:38080/user/updatePwd",
+                url : URL+"user/updatePwd",
                 type : "POST",
                 data : "data="+data,
                 success : function (data) {

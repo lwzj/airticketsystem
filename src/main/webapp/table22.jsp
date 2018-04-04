@@ -37,7 +37,7 @@
             var s = $('#search').val();
             var data = "{'carId':'"+s+"'}";
             $.ajax({
-                url : URL+"admin/queryUserByCarId",
+                url : URL+"user/queryOrderByCarId",
                 type : "POST",
                 data : "data="+data,
                 success : function (data) {

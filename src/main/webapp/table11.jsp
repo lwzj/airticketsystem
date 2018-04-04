@@ -37,19 +37,22 @@
             var s = $('#search').val();
             var data = "{'id':'"+s+"'}";
             $.ajax({
-                url : URL+"user/queryOrderById",
+                url : URL+"user/queryFlightById",
                 type : "POST",
                 data : "data="+data,
                 success : function (data) {
                     if (data.code == 200) {
                         var n = data.size;
                         for (var i = 0; i < n; i++) {
-                            var o = data.users[i];
-                            list += "<tr class=\"odd gradeX\"><td>" + o.username + "</td>\n" +
-                                "<td>" + o.carId + "</td>\n" +
-                                "<td>" + o.usertype + "</td>\n" +
-                                "<td class=\"center\">" + o.tel+ "</td>\n" +
-                                "<td class=\"center\">" + o.money + "</td></tr>"
+                            var o = data.flights[i];
+                            list += "<tr class=\"odd gradeX\"><td>" + o.flightId + "</td>\n" +
+                                "<td>" + o.takeoffTime + "</td>\n" +
+                                "<td>" + o.landingTime + "</td>\n" +
+                                "<td class=\"center\">" + o.price+ "</td>\n" +
+                                "<td class=\"center\">" + o.takeoffCity+ "</td>\n" +
+                                "<td class=\"center\">" + o.landingCity+ "</td>\n" +
+                                "<td class=\"center\">" + o.num+ "</td>\n" +
+                                "<td class=\"center\"><a href='order.jsp'>订票</a> </td></tr>"
                         }
 
                         $("#parkList").append(list);
@@ -191,6 +194,7 @@
                                             <th>出发地</th>
                                             <th>目的地</th>
                                             <th>剩余票数</th>
+                                            <th>订票</th>
                                         </tr>
                                     </thead>
                                     <tbody id="parkList">

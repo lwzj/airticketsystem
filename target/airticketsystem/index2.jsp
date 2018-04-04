@@ -23,7 +23,7 @@
 
 <body>
     <div id="wrapper">
-<c:if test="${not empty username}">
+<%--<c:if test="${not empty username}">--%>
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -38,7 +38,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down">11</i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="repwd.jsp"><i class="fa fa-user fa-fw"></i>修改密码</a>
@@ -108,13 +108,13 @@
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
-    </c:if>
-    </div>
-    <c:if test="${empty username}">
-        <div>
-            <h1>你没有<a href="login.jsp">登录</a></h1>
-        </div>
-    </c:if>
+    <%--</c:if>--%>
+    <%--</div>--%>
+    <%--<c:if test="${empty username}">--%>
+        <%--<div>--%>
+            <%--<h1>你没有<a href="login.jsp">登录</a></h1>--%>
+        <%--</div>--%>
+    <%--</c:if>--%>
     <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
