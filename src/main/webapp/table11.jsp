@@ -52,7 +52,7 @@
                                 "<td class=\"center\">" + o.takeoffCity+ "</td>\n" +
                                 "<td class=\"center\">" + o.landingCity+ "</td>\n" +
                                 "<td class=\"center\">" + o.num+ "</td>\n" +
-                                "<td class=\"center\"><a href='order.jsp'>订票</a> </td></tr>"
+                                "<td class=\"center\"><input value='订票' id='"+o.id+"' type='button' onclick='show("+o.id+")' /> </td></tr>"
                         }
 
                         $("#parkList").append(list);
@@ -60,6 +60,38 @@
                 },
                 dataType : "json",
             });
+        }
+ 
+            function show(id) {
+                jQuery("#info").dialog("open");
+                jQuery("#info").load("url");
+                return false;
+            }
+            jQuery("#info").dialog(
+                {
+                    modal:true,
+                    autoOpen:false,
+                    width: 800,
+                    maxHeight: 400,
+                    buttons:{
+                        'Ok':function () {
+
+                            jQuery(this).dialog('close')
+                        },
+                        'Cancel':function () {
+                            jQuery(this).dialog('close')
+                        }
+                    },
+                    position:["center",100]
+                }
+            );
+
+        function order(id) {
+
+        }
+        
+        function addUser() {
+            $("user").prepend("<input type=\"text\" name=\"username\"/><input type=\"text\" name=\"IDcard\"/><br>")
         }
 //        function queryPark() {
 //            var list = "";
@@ -202,7 +234,14 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- 弹出添加人员信息-->
+                            <div id="info">
 
+                                <input type="text" name="username"/>
+                                <input type="text" name="IDcard"/><br>
+
+                                <input id="user" type="button" value="添加乘客" onclick="addUser()"/>
+                            </div>
                         </div>
                     </div>
                     <!--End Advanced Tables -->
