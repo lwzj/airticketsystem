@@ -12,7 +12,7 @@ public class MessageServiceImpl implements IMessageService {
     @Autowired
     private IMessageDao messageDao;
     public int add(Map<String, Object> param) {
-        int m = messageDao.add(param);
+        int m = messageDao.addMessage(param);
         return m;
     }
 }

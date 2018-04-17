@@ -15,6 +15,6 @@ public class UserServiceImpl implements IUserService {
     private IUserDao userDao;
     public List<User> getUser(Map<String, Object> param) {
         List<User> users = userDao.getUser(param);
-        return null;
+        return users;
     }
 }

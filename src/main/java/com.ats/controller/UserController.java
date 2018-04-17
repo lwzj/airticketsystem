@@ -80,8 +80,9 @@ public class UserController {
         if (flights.size() != 0) {
             obj.put("code", 200);
             obj.put("flights", flights);
+            obj.put("size", flights.size());
         }else{
-            obj.put("code", 200);
+            obj.put("code", 100);
             obj.put("message", "查无此航班！");
         }
         return obj;

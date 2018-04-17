@@ -56,6 +56,8 @@
                         }
 
                         $("#parkList").append(list);
+                    }else{
+                        alert(data.message)
                     }
                 },
                 dataType : "json",
@@ -63,11 +65,13 @@
         }
  
             function show(id) {
-                jQuery("#info").dialog("open");
-                jQuery("#info").load("url");
+                $("#ftid").data("ftid",id);
+                jQuery("#infos").dialog("open");
+                jQuery("#infos").load("url");
                 return false;
             }
-            jQuery("#info").dialog(
+
+            jQuery("#infos").dialog(
                 {
                     modal:true,
                     autoOpen:false,
@@ -86,12 +90,31 @@
                 }
             );
 
-        function order(id) {
+        function order() {
+            var list = [];
+            var ftid = $("#ftid").data("ftid");
+            var $name = $(".username");
+            var $IDcard = $(".IDcard")
+            for(var i = 0;i<$name.length;i++) {
+                var user = {};
+                user['name'] = $name[i].value;
+                user['IDcard'] = $IDcard[i].value;
+                list.push(user);
+            }
+            var data = "{'fid':"+ftid+",'users':"+list+"}";
+            $.ajax({
+                url: URL + "user/order",
+                type: "POST",
+                data: "data=" + data,
+                success: function (data) {
+
+                }
+            });
 
         }
         
         function addUser() {
-            $("user").prepend("<input type=\"text\" name=\"username\"/><input type=\"text\" name=\"IDcard\"/><br>")
+            $("#info").append("姓名：<input type=\"text\" class=\"username\"/>证件号：<input type=\"text\" class=\"IDcard\"/><br>")
         }
 //        function queryPark() {
 //            var list = "";
@@ -123,6 +146,7 @@
 
 </head>
 <body>
+    <div id="ftid"></div>
     <div id="wrapper">
 <%--<c:if test="${not empty username}">--%>
         <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -235,12 +259,14 @@
                                 </table>
                             </div>
                             <!-- 弹出添加人员信息-->
+                            <div id="infos" style="display: none">
                             <div id="info">
 
-                                <input type="text" name="username"/>
-                                <input type="text" name="IDcard"/><br>
-
+                                姓名：<input type="text" class="username"/>
+                                证件号：<input type="text" class="IDcard"/><br>
+                            </div>
                                 <input id="user" type="button" value="添加乘客" onclick="addUser()"/>
+                                <input id="order" type="button" value="订票" onclick="order()">
                             </div>
                         </div>
                     </div>

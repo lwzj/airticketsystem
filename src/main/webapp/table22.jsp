@@ -180,10 +180,10 @@
                                     <thead>
                                         <tr>
                                             <th>姓名</th>
-                                            <th>车牌号</th>
-                                            <th>用户类型</th>
-                                            <th>电话</th>
-                                            <th>余额</th>
+                                            <th>航班号</th>
+                                            <th>证件号</th>
+                                            <th>状态</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody id="parkList">

@@ -42,6 +42,8 @@ public class AdminController {
             object.put("username", users.get(0).getUsername());
             request.getSession().setAttribute("id",users.get(0).getId());
             request.getSession().setAttribute("username",users.get(0).getUsername());
+            request.getSession().setAttribute("admin",users.get(0));
+
         }else{
             object.put("code", 100);
             object.put("message", "用户名密码错误");

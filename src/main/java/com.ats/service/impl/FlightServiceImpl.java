@@ -19,7 +19,7 @@ public class FlightServiceImpl implements IFlightService {
     }
 
     public int add(Map<String, Object> param) {
-        int m = flightDao.add(param);
+        int m = flightDao.addFlight(param);
         return m;
     }
 }

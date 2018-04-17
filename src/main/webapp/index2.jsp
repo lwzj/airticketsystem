@@ -17,7 +17,8 @@
     <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> 
+    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="static/js/common/common.js"></script>
      
 </head>
 

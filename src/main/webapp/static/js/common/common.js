@@ -1,5 +1,6 @@
 //var URL = "http://localhost/";
 var URL = "http://localhost:8080/";
+// var URL = "http://localhost:58080/";
 
 var UID = 123;
 function CheckMail(mail) {
