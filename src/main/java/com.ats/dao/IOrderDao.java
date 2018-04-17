@@ -9,4 +9,6 @@ public interface IOrderDao {
     List<Order> findById(Map<String, Object> param);
 
     void update(Map<String, Object> param);
+
+    void addOrder(Map<String, Object> param);
 }

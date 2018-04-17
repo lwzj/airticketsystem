@@ -93,27 +93,27 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 添加航班</a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 查看留言</a>
                     </li>
 
-                    <li>
-                        <a href="table1.jsp" class="active-menu"><i class="fa fa-table"></i> 出入场信息</a>
-                    </li>
-                    <li>
-                        <a href="table2.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
-                    </li>
-                    <li>
-                        <a href="table3.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
-                    </li>
-                    <li>
-                        <a href="table4.jsp"><i class="fa fa-table"></i> 收费标准 </a>
-                    </li>
-                    <li>
-                        <a href="table5.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>
-                    </li>
-                    <li>
-                        <a href="table6.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>
-                    </li>
+                <%--<li>--%>
+                        <%--<a href="table2.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="table3.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="table4.jsp"><i class="fa fa-table"></i> 收费标准 </a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="table5.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="table6.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>--%>
+                    <%--</li>--%>
                         </ul>
                     </li>
 

@@ -28,8 +28,25 @@ WHERE `id` LIKE concat(concat('%',#{id}),'%')
 LIMIT 0, 1000 ;
     </select>
 
+    <update id="updateFlight" parameterType="java.util.Map">
+        UPDATE
+  `flight`
+SET
+  `num` = #{num}
+WHERE `id` = #{id} ;
+
+    </update>
+
+    <select id="queryNum" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT
+  `num`
+FROM
+`flight`
+WHERE `id` = #{id}
+    </select>
+
     <insert id="addFlight" parameterType="java.util.Map">
-        INSERT INTO `airticketsystem`.`flight` (
+        INSERT INTO `flight` (
   `flightId`,
   `takeoffTime`,
   `landingTime`,

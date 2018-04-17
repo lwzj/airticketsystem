@@ -35,6 +35,13 @@
                 success: function (data) {
                     if (data.code == 200) {
                         alert("添加成功！")
+                        $("#flightId").attr("value",'');
+                        $("#takeoffTime").attr("value",'');
+                        $("#landingTime").attr("value",'');
+                        $("#num").attr("value",'');
+                        $("#takeoffCity").attr("value",'');
+                        $("#landingCity").attr("value",'');
+                        $("#price").attr("value",'');
                     } else {
                         alert("添加失败！")
                     }
@@ -82,6 +89,9 @@
 
                     <li>
                         <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 添加航班</a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 查看留言</a>
                     </li>
 
 

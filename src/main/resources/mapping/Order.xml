@@ -21,4 +21,17 @@
         WHERE
         `id` = #{id};
     </select>
+    <insert id="addOrder" parameterType="java.util.Map">
+        INSERT INTO `order` (
+  `username`,
+  `flightId`,
+  `IDcard`
+)
+VALUES
+  (
+    #{username},
+    #{flightId},
+    #{IDcard}
+  ) ;
+    </insert>
 </mapper>

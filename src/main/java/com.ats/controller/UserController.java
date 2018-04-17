@@ -3,11 +3,13 @@ package com.ats.controller;
 import com.ats.bean.Flight;
 import com.ats.bean.Order;
 import com.ats.bean.User;
+import com.ats.dto.OrderDto;
 import com.ats.service.IFlightService;
 import com.ats.service.IMessageService;
 import com.ats.service.IOrderService;
 import com.ats.service.IUserService;
 import com.ats.utils.JsonUtil;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -95,12 +98,14 @@ public class UserController {
     @ResponseBody
     public JSONObject reservation(HttpServletRequest request) {
         String data = request.getParameter("data");
+        JSONArray jsonArray = JSONArray.fromObject(data);
         JSONObject obj = new JSONObject();
-        Map<String, Object> param = JsonUtil.getMapFromJson(data);
-        int id = orderService.add(param);
-        if (id != 0) {
+        List<OrderDto> orders = (List<OrderDto>) jsonArray.toCollection(jsonArray, OrderDto.class);
+        boolean s = orderService.add(orders);
+        if (s) {
             obj.put("code", 200);
-            obj.put("id", id);
+            obj.put("message", "出票成功");
+//            obj.put("id", id);
         }else{
             obj.put("code", 100);
             obj.put("message", "出票失败");
