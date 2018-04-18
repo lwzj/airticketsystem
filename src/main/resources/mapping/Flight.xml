@@ -24,7 +24,7 @@
   `landingCity`
 FROM
 `flight`
-WHERE `id` LIKE concat(concat('%',#{id}),'%')
+WHERE `id` = #{id}
 LIMIT 0, 1000 ;
     </select>
 
@@ -43,6 +43,14 @@ WHERE `id` = #{id} ;
 FROM
 `flight`
 WHERE `id` = #{id}
+    </select>
+
+    <select id="queryByFlightId" parameterType="java.util.Map" resultMap="flightResult">
+        SELECT
+        *
+        FROM
+        `flight`
+        WHERE `flightId` = #{flightId}
     </select>
 
     <insert id="addFlight" parameterType="java.util.Map">

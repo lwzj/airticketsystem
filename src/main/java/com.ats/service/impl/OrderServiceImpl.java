@@ -6,6 +6,7 @@ import com.ats.dao.IFlightDao;
 import com.ats.dao.IOrderDao;
 import com.ats.dto.OrderDto;
 import com.ats.service.IOrderService;
+import com.ats.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,12 @@ public class OrderServiceImpl implements IOrderService {
         List<Order> orders = orderDao.findById(param);
         return orders;
     }
+    public List<Order> findByOrderNum(Map<String, Object> param) {
+        List<Order> orders = orderDao.findByOrderNum(param);
+        return orders;
+    }
 
-    public synchronized boolean add(List<OrderDto> orderDtos) {
+    public synchronized boolean add(List<OrderDto> orderDtos,String orderNum) {
         Map<String, Object> p = new HashMap<String, Object>();
         p.put("id", orderDtos.get(0).getFlightId());
         int num = flightDao.queryNum(p);
@@ -37,6 +42,7 @@ public class OrderServiceImpl implements IOrderService {
             param.put("flightId", order.getFlightId());
             param.put("username", order.getUsername());
             param.put("IDcard", order.getIDcard());
+            param.put("orderNum", orderNum);
             orderDao.addOrder(param);
             num--;
         }
@@ -49,6 +55,6 @@ public class OrderServiceImpl implements IOrderService {
 
 
     public void update(Map<String, Object> param) {
-        orderDao.update(param);
+        orderDao.updateOrder(param);
     }
 }

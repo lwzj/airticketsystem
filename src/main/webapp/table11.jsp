@@ -82,12 +82,12 @@
             for (var i = 0; i < $name.length; i++) {
                 var order = {};
                 order.flightId = ftid;
-                order.usernae = $name[i].value;
-                order.IDcrard = $IDcard[i].value;
+                order.username = $name[i].value;
+                order.IDcard = $IDcard[i].value;
                 list.push(order);
             }
             var olist = JSON.stringify(list);
-            alert(olist);
+//            alert(olist);
             data = olist;
             $.ajax({
                 url: URL + "user/order",
@@ -96,7 +96,9 @@
                 success: function (data) {
                     if (data.code == 200) {
                         $("#infos").hide();
-                        alter(data.message+"")
+                        $(".username").attr("value","");
+                        $(".IDcard").attr("value","");
+                        alter(data.message+"订单号："+data.id);
                     }
                     else{
                         alter(data.message)
@@ -143,7 +145,7 @@
 <body>
 <div id="ftid"></div>
 <div id="wrapper">
-    <%--<c:if test="${not empty username}">--%>
+    <c:if test="${not empty username}">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -189,10 +191,10 @@
                 <li>
                     <a href="table22.jsp"><i class="fa fa-table"></i> 订单信息 </a>
                 </li>
-                <%--<li>
-                    <a href="table33.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
-                </li>
                 <li>
+                    <a href="table33.jsp"><i class="fa fa-table"></i> 意见反馈 </a>
+                </li>
+                <%--<li>
                     <a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>
                 </li>
                 <li>
@@ -276,12 +278,12 @@
         <footer><p>Copyright &copy; 2016.Company name All rights reserved.</p></footer>
     </div>
     <!-- /. PAGE INNER  -->
-    <%--</c:if>--%>
-    <%--<c:if test="${empty username}">--%>
-    <%--<div>--%>
-    <%--<h1>你没有<a href="login.jsp">登录</a></h1>--%>
-    <%--</div>--%>
-    <%--</c:if>--%>
+    </c:if>
+    <c:if test="${empty username}">
+    <div>
+    <h1>你没有<a href="login.jsp">登录</a></h1>
+    </div>
+    </c:if>
 </div>
 <!-- jQuery Js -->
 <script src="assets/js/jquery-1.10.2.js"></script>

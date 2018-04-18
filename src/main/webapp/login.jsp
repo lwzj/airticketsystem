@@ -29,7 +29,7 @@ function login(){
 	
 	var s=$("#j-pwd").val();
 	
-	 var data = "{'tel':"+e+",'password':'"+s+"'}";
+	 var data = "{'phone':"+e+",'password':'"+s+"'}";
 	 var url = URL+"index2.jsp";
 	$.ajax({
 		 url: URL+"user/login",

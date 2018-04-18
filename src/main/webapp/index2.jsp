@@ -60,15 +60,17 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="index2.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="index2.jsp" class="active-menu"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
 
-
                     <li>
-                        <a href="table11.jsp"><i class="fa fa-table"></i> 航班信息</a>
+                        <a href="table11.jsp" ><i class="fa fa-table"></i> 航班信息</a>
                     </li>
                     <li>
                         <a href="table22.jsp"><i class="fa fa-table"></i> 订单信息 </a>
+                    </li>
+                    <li>
+                        <a href="table33.jsp"><i class="fa fa-table"></i> 意见反馈 </a>
                     </li>
                     <%--<li>--%>
                         <%--<a href="table33.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>--%>

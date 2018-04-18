@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.08 (64 bit)
-MySQL - 5.7.15-log : Database - airticketsystem
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 5.5.36 : Database - airticketsystem
 *********************************************************************
 */
 
@@ -25,9 +25,11 @@ CREATE TABLE `admin` (
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `admin` */
+
+insert  into `admin`(`id`,`username`,`password`) values (1,'admin','admin');
 
 /*Table structure for table `flight` */
 
@@ -43,9 +45,11 @@ CREATE TABLE `flight` (
   `takeoffCity` varchar(50) DEFAULT NULL,
   `landingCity` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `flight` */
+
+insert  into `flight`(`id`,`flightId`,`takeoffTime`,`landingTime`,`price`,`num`,`takeoffCity`,`landingCity`) values (1,'123','2016-09-24T13:59:59','2018-04-12T13:59:59',13,7,'123','123');
 
 /*Table structure for table `message` */
 
@@ -68,12 +72,15 @@ CREATE TABLE `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `flightId` varchar(20) DEFAULT NULL,
-  `isDel` int(2) DEFAULT NULL,
+  `isDel` int(2) DEFAULT '0',
   `IDcard` varchar(18) DEFAULT NULL,
+  `orderNum` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `order` */
+
+insert  into `order`(`id`,`username`,`flightId`,`isDel`,`IDcard`,`orderNum`) values (4,'qw','1',0,'123','3cx1HNa1R6'),(5,'er','1',0,'456','3cx1HNa1R6');
 
 /*Table structure for table `user` */
 
@@ -86,9 +93,11 @@ CREATE TABLE `user` (
   `name` varchar(50) DEFAULT NULL,
   `IDcard` varchar(18) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
+
+insert  into `user`(`id`,`phone`,`password`,`name`,`IDcard`) values (1,'123','123','lw','123');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

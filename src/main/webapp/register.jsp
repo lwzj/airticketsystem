@@ -9,7 +9,7 @@
 	content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>停车管理系统_注册</title>
+<title>航空售票系统_注册</title>
 
 <link rel="stylesheet"
 	href="./static/css/common/normalize_dd5983a.css~v=1.2.0.css" />

@@ -91,7 +91,11 @@
                         <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 添加航班</a>
                     </li>
                     <li>
-                        <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 查看留言</a>
+                        <a href="table1.jsp"><i class="fa fa-dashboard"></i> 查看航班</a>
+                    </li>
+
+                    <li>
+                        <a href="table2.jsp"><i class="fa fa-table"></i> 查看留言 </a>
                     </li>
 
 

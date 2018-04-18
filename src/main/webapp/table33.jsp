@@ -26,40 +26,7 @@
     <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <script type="text/javascript" src="static/js/common/common.js"></script>
     <script type="text/javascript">
-        $(function(){
-            $("#search").bind("input propertychange",function () {
-                searcher();
-            });
-        })
-        function searcher() {
-            $("#parkList").empty();
-            var list = "";
-            var s = $('#search').val();
-            var data = "{'carId':'"+s+"'}";
-            $.ajax({
-                url : URL+"admin/queryParkByCarId",
-                type : "POST",
-                data : "data="+data,
-                success : function (data) {
-                    if (data.code == 200) {
-                        var n = data.size;
-                        for (var i = 0; i < n; i++) {
-                            var o = data.parks[i];
-                            var start = new Date(o.startpark.time);
-                            var end = new Date(o.endpark.time);
-                            list += "<tr class=\"odd gradeX\"><td>" + o.stationid + "</td>\n" +
-                                "<td>" + o.carId + "</td>\n" +
-                                "<td>" + start.pattern("yyyy-MM-dd HH:mm:ss") + "</td>\n" +
-                                "<td class=\"center\">" + end.pattern("yyyy-MM-dd HH:mm:ss")+ "</td>\n" +
-                                "<td class=\"center\">" + o.fee + "</td></tr>"
-                        }
 
-                        $("#parkList").append(list);
-                    }
-                },
-                dataType : "json",
-            });
-        }
     </script>
 </head>
 <body >
@@ -82,10 +49,10 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>信息维护</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>系统管理</a>
-                        </li>
+                        <%--<li><a href="#"><i class="fa fa-user fa-fw"></i>信息维护</a>--%>
+                        <%--</li>--%>
+                        <%--<li><a href="#"><i class="fa fa-gear fa-fw"></i>系统管理</a>--%>
+                        <%--</li>--%>
                         <li class="divider"></li>
                         <li><a href="/logout1"><i class="fa fa-sign-out fa-fw"></i>退出</a>
                         </li>
@@ -105,23 +72,23 @@
                     </li>
 
                     <li>
-                        <a href="table11.jsp"><i class="fa fa-table"></i> 出入场信息</a>
+                        <a href="table11.jsp"><i class="fa fa-table"></i> 航班信息</a>
                     </li>
                     <li>
-                        <a href="table22.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
+                        <a href="table22.jsp" class="active-menu"><i class="fa fa-table"></i> 订单信息 </a>
                     </li>
                     <li>
-                        <a href="table33.jsp" class="active-menu"><i class="fa fa-table"></i> 用户历史信息 </a>
+                        <a href="table33.jsp"><i class="fa fa-table"></i> 意见反馈 </a>
                     </li>
-                    <li>
-                        <a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>
-                    </li>
-                    <li>
-                        <a href="table55.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>
-                    </li>
-                    <li>
-                        <a href="table66.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>
-                    </li>
+                    <%--<li>--%>
+                        <%--<a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="table55.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="table66.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>--%>
+                    <%--</li>--%>
                         </ul>
                     </li>
 
@@ -136,7 +103,7 @@
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            出入场信息 <small>Admission information</small>
+                            意见反馈 <small>Feedback feedback</small>
                         </h1>
                     </div>
                 </div>
@@ -147,25 +114,17 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             车位情况
+                             意见反馈
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <div class="col-sm-6">
-                                    <div id="dataTables-example_filter" class="dataTables_filter">
-                                        <label>按照车牌号查:<input id="search" type="search" class="form-control input-sm" aria-controls="dataTables-example"></label>
-                                    </div>
+                                    <%--<div id="dataTables-example_filter" class="dataTables_filter">--%>
+                                        <%--<label>按照车牌号查:<input id="search" type="search" class="form-control input-sm" aria-controls="dataTables-example"></label>--%>
+                                    <%--</div>--%>
                                 </div>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>车位号</th>
-                                            <th>车牌号</th>
-                                            <th>停车开始时间</th>
-                                            <th>停车结束时间</th>
-                                            <th>停车的收费</th>
-                                        </tr>
-                                    </thead>
+
                                     <tbody id="parkList">
 
                                     </tbody>

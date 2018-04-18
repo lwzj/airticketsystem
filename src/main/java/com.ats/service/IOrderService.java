@@ -8,8 +8,9 @@ import java.util.Map;
 
 public interface IOrderService {
     List<Order> findById(Map<String, Object> param);
+    List<Order> findByOrderNum(Map<String, Object> param);
 
-    boolean add(List<OrderDto> orderDtos);
+    boolean add(List<OrderDto> orderDtos,String orderNum);
 
     void update(Map<String, Object> param);
 }

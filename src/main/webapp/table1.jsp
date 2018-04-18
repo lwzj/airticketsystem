@@ -93,15 +93,15 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 添加航班</a>
+                        <a href="index.jsp"><i class="fa fa-dashboard"></i> 添加航班</a>
                     </li>
                     <li>
-                        <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard"></i> 查看留言</a>
+                        <a class="active-menu" href="table1.jsp"><i class="fa fa-dashboard"></i> 查看航班</a>
                     </li>
 
-                <%--<li>--%>
-                        <%--<a href="table2.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>--%>
-                    <%--</li>--%>
+                <li>
+                        <a href="table2.jsp"><i class="fa fa-table"></i> 查看留言 </a>
+                    </li>
                     <%--<li>--%>
                         <%--<a href="table3.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>--%>
                     <%--</li>--%>

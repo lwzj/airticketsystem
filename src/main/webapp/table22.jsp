@@ -35,7 +35,7 @@
             $("#parkList").empty();
             var list = "";
             var s = $('#search').val();
-            var data = "{'carId':'"+s+"'}";
+            var data = "{'orderNum':'"+s+"'}";
             $.ajax({
                 url : URL+"user/queryOrderByCarId",
                 type : "POST",
@@ -44,15 +44,48 @@
                     if (data.code == 200) {
                         var n = data.size;
                         for (var i = 0; i < n; i++) {
-                            var o = data.users[i];
+                            var o = data.orders[i];
+                            if(o.isDel==0){
                             list += "<tr class=\"odd gradeX\"><td>" + o.username + "</td>\n" +
-                                "<td>" + o.carId + "</td>\n" +
-                                "<td>" + o.usertype + "</td>\n" +
-                                "<td class=\"center\">" + o.tel+ "</td>\n" +
-                                "<td class=\"center\">" + o.money + "</td></tr>"
-                        }
+                                "<td>" + o.IDcard + "</td>\n" +
+                                "<td>" + o.flightId + "</td>\n" +
+                                "<td>" + o.takeoffTime + "</td>\n" +
+                                "<td>" + o.landingTime + "</td>\n" +
+                                "<td>" + o.takeoffCity + "</td>\n" +
+                                "<td>" + o.landingCity + "</td>\n" +
+                                "<td class=\"center\"><input type='button' onclick='tuipiao( " + o.id+ ")'/></td>\n"
+                            }else{
+                                list += "<tr class=\"odd gradeX\"><td>" + o.username + "</td>\n" +
+                                    "<td>" + o.IDcard + "</td>\n" +
+                                    "<td>" + o.flightId + "</td>\n" +
+                                    "<td>" + o.takeoffTime + "</td>\n" +
+                                    "<td>" + o.landingTime + "</td>\n" +
+                                    "<td>" + o.takeoffCity + "</td>\n" +
+                                    "<td>" + o.landingCity + "</td>\n" +
+                                    "<td class=\"center\">已退票</td>\n"
+                            }
 
+                        }
                         $("#parkList").append(list);
+                    }
+                },
+                dataType : "json",
+            });
+        }
+        function tuipiao(id) {
+            var id = id;
+            var data = "{'id':'"+id+"'}";
+            $.ajax({
+                url : URL+"user/tuipiao",
+                type : "POST",
+                data : "data="+data,
+                success : function (data) {
+                    if (data.code == 200) {
+                        alert(data.message);
+                        location.reload();
+                    } else {
+                        alert(data.message);
+                        location.reload();
                     }
                 },
                 dataType : "json",
@@ -132,18 +165,18 @@
                     <li>
                         <a href="table22.jsp" class="active-menu"><i class="fa fa-table"></i> 订单信息 </a>
                     </li>
-                   <%-- <li>
-                        <a href="table33.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
+                 <li>
+                        <a href="table33.jsp"><i class="fa fa-table"></i> 意见反馈 </a>
                     </li>
-                    <li>
-                        <a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>
-                    </li>
-                    <li>
-                        <a href="table55.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>
-                    </li>
-                    <li>
-                        <a href="table66.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>
-                    </li>--%>
+                        <%--   <li>
+                            <a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>
+                        </li>
+                        <li>
+                            <a href="table55.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>
+                        </li>
+                        <li>
+                            <a href="table66.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>
+                        </li>--%>
                         <%--</ul>
                     </li>--%>
 
@@ -180,8 +213,12 @@
                                     <thead>
                                         <tr>
                                             <th>姓名</th>
-                                            <th>航班号</th>
                                             <th>证件号</th>
+                                            <th>航班号</th>
+                                            <th>出发时间</th>
+                                            <th>到达时间</th>
+                                            <th>出发地</th>
+                                            <th>目的地</th>
                                             <th>状态</th>
                                             <th>操作</th>
                                         </tr>

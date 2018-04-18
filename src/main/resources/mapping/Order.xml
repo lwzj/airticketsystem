@@ -9,29 +9,45 @@
         <result column="IDcard" property="IDcard" jdbcType="VARCHAR"/>
     </resultMap>
 
+
     <select id="findById" parameterType="java.util.Map" resultMap="orderResult">
         select
-          `id`,
-          `username`,
-          `flightId`,
-          `isDel`,
-          `IDcard`
+          *
         from
           `order`
         WHERE
         `id` = #{id};
     </select>
+    <select id="findByOrderNum" parameterType="java.util.Map" resultMap="orderResult">
+        select
+        *
+        from
+        `order`
+        WHERE
+        `orderNum` = #{orderNum};
+    </select>
     <insert id="addOrder" parameterType="java.util.Map">
         INSERT INTO `order` (
   `username`,
   `flightId`,
-  `IDcard`
+  `IDcard`,
+  orderNum
 )
 VALUES
   (
     #{username},
     #{flightId},
-    #{IDcard}
+    #{IDcard},
+    #{orderNum}
   ) ;
     </insert>
+
+    <update id="updateOrder" parameterType="java.util.Map">
+        UPDATE
+  `order`
+SET
+  `isDel` = 1
+
+WHERE `id` = #{id} ;
+    </update>
 </mapper>

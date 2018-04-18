@@ -4,11 +4,13 @@ import com.ats.bean.Flight;
 import com.ats.bean.Order;
 import com.ats.bean.User;
 import com.ats.dto.OrderDto;
+import com.ats.dto.OrderDto2;
 import com.ats.service.IFlightService;
 import com.ats.service.IMessageService;
 import com.ats.service.IOrderService;
 import com.ats.service.IUserService;
 import com.ats.utils.JsonUtil;
+import com.ats.utils.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,9 +55,9 @@ public class UserController {
             object.put("message", "success");
             object.put("uid", users.get(0).getId());
             object.put("username", users.get(0).getName());
-            request.getSession().setAttribute("id",users.get(0).getId());
-            request.getSession().setAttribute("username",users.get(0).getName());
-        }else{
+            request.getSession().setAttribute("id", users.get(0).getId());
+            request.getSession().setAttribute("username", users.get(0).getName());
+        } else {
             object.put("code", 100);
             object.put("message", "用户名密码错误");
         }
@@ -84,7 +87,7 @@ public class UserController {
             obj.put("code", 200);
             obj.put("flights", flights);
             obj.put("size", flights.size());
-        }else{
+        } else {
             obj.put("code", 100);
             obj.put("message", "查无此航班！");
         }
@@ -101,31 +104,55 @@ public class UserController {
         JSONArray jsonArray = JSONArray.fromObject(data);
         JSONObject obj = new JSONObject();
         List<OrderDto> orders = (List<OrderDto>) jsonArray.toCollection(jsonArray, OrderDto.class);
-        boolean s = orderService.add(orders);
+        String orderNum = StringUtil.getRandomString2(10);
+        boolean s = orderService.add(orders, orderNum);
         if (s) {
             obj.put("code", 200);
             obj.put("message", "出票成功");
-//            obj.put("id", id);
-        }else{
+            obj.put("id", orderNum);
+        } else {
             obj.put("code", 100);
-            obj.put("message", "出票失败");
+            obj.put("message", "出票失败,余票不足！");
         }
         return obj;
     }
+
     /**
      * 查询订单
      */
-    @RequestMapping("queryOrderById")
+    @RequestMapping("queryOrderByCarId")
     @ResponseBody
     public JSONObject queryOrder(HttpServletRequest request) {
         String data = request.getParameter("data");
         JSONObject obj = new JSONObject();
         Map<String, Object> param = JsonUtil.getMapFromJson(data);
-        List<Order> orders = orderService.findById(param);
+        List<Order> orders = orderService.findByOrderNum(param);
+        List<OrderDto2> orderDto2s = null;
         if (orders.size() != 0) {
+            Map<String, Object> param1 = new HashMap<String, Object>();
+            param1.put("id", orders.get(0).getFlightId());
+            List<Flight> flights = flightService.findById(param1);
+            orderDto2s = new ArrayList<OrderDto2>();
+            for (Order order : orders) {
+                OrderDto2 orderDto2 = new OrderDto2();
+                orderDto2.setId(order.getId());
+                orderDto2.setFlightId(order.getFlightId());
+                orderDto2.setUsername(order.getUsername());
+                orderDto2.setIDcard(order.getIDcard());
+                orderDto2.setTakeoffTime(flights.get(0).getTakeoffTime());
+                orderDto2.setLandingTime(flights.get(0).getLandingTime());
+                orderDto2.setTakeoffCity(flights.get(0).getTakeoffCity());
+                orderDto2.setLandingCity(flights.get(0).getLandingCity());
+                orderDto2.setPrice(flights.get(0).getPrice());
+                orderDto2.setIsDel(order.getIsDel());
+                orderDto2s.add(orderDto2);
+            }
+        }
+        if (orderDto2s.size() != 0) {
             obj.put("code", 200);
-            obj.put("orders", orders);
-        }else{
+            obj.put("orders", orderDto2s);
+            obj.put("size", orderDto2s.size());
+        } else {
             obj.put("code", 200);
             obj.put("message", "查无此订单！");
         }
@@ -146,6 +173,7 @@ public class UserController {
         obj.put("message", "退票成功");
         return obj;
     }
+
     /**
      * 反馈
      */
@@ -159,7 +187,7 @@ public class UserController {
         if (id != 0) {
             obj.put("code", 200);
             obj.put("message", "反馈成功");
-        }else{
+        } else {
             obj.put("code", 100);
             obj.put("message", "提交失败");
         }
