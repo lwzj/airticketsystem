@@ -67,9 +67,18 @@ public class UserController {
     /**
      * 注册
      */
+    @RequestMapping("register")
+    @ResponseBody
     public JSONObject register(HttpServletRequest request) {
+        String data = request.getParameter("data");
         JSONObject obj = new JSONObject();
-
+        Map<String, Object> param = JsonUtil.getMapFromJson(data);
+        try {
+            userService.addUser(param);
+            obj.put("code", 200);
+        } catch (Exception e) {
+            obj.put("code", 100);
+        }
         return obj;
     }
 
@@ -181,13 +190,15 @@ public class UserController {
     @ResponseBody
     public JSONObject feedback(HttpServletRequest request) {
         String data = request.getParameter("data");
+        String name = request.getSession().getAttribute("username").toString();
         JSONObject obj = new JSONObject();
         Map<String, Object> param = JsonUtil.getMapFromJson(data);
-        int id = messageService.add(param);
-        if (id != 0) {
+        param.put("username", name);
+        try {
+        messageService.addM(param);
             obj.put("code", 200);
             obj.put("message", "反馈成功");
-        } else {
+        }catch (Exception e){
             obj.put("code", 100);
             obj.put("message", "提交失败");
         }

@@ -7,4 +7,6 @@ import java.util.Map;
 
 public interface IUserService {
     List<User> getUser(Map<String, Object> param);
+
+    void addUser(Map<String, Object> param);
 }

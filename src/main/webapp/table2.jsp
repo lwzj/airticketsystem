@@ -61,18 +61,15 @@
         function queryUser() {
             var list = "";
             $.ajax({
-                url: URL + "admin/queryUser",
+                url: URL + "admin/queryMessage",
                 type : "POST",
                 success: function (data) {
                     if (data.code == 200) {
                         var n = data.size;
                         for (var i = 0; i < n; i++) {
-                            var o = data.users[i];
+                            var o = data.messages[i];
                             list += "<tr class=\"odd gradeX\"><td>" + o.username + "</td>\n" +
-                                "<td>" + o.carId + "</td>\n" +
-                                "<td>" + carType(o.usertype) + "</td>\n" +
-                                "<td class=\"center\">" + o.tel+ "</td>\n" +
-                                "<td class=\"center\">" + o.money + "</td></tr>"
+                                "<td class=\"center\">" + o.message + "</td></tr>"
                         }
                         $("#parkList").append(list);
                     }else{
@@ -161,7 +158,7 @@
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            用户信息 <small>User information</small>
+                            反馈信息 <small>Feedback information</small>
                         </h1>
                     </div>
                 </div>
@@ -171,10 +168,10 @@
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                             用户信息
-                                        <label>Search（按车牌号查）:<input id="search" type="search" class="form-control input-sm" aria-controls="dataTables-example"></label>
-                        </div>
+                        <%--<div class="panel-heading">--%>
+                             <%--用户信息--%>
+                                        <%--<label>Search（按车牌号查）:<input id="search" type="search" class="form-control input-sm" aria-controls="dataTables-example"></label>--%>
+                        <%--</div>--%>
                         <div class="panel-body">
                             <div class="table-responsive">
                                     <div id="dataTables-example_filter" class="dataTables_filter">
@@ -183,10 +180,7 @@
                                     <thead>
                                         <tr>
                                             <th>姓名</th>
-                                            <th>车牌号</th>
-                                            <th>用户类型</th>
-                                            <th>电话</th>
-                                            <th>余额</th>
+                                            <th>意见</th>
                                         </tr>
                                     </thead>
                                     <tbody id="parkList">

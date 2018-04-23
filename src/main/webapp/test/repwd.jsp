@@ -9,26 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     <!-- Morris Chart Styles-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
     <link rel="stylesheet"
-          href="./static/css/common/normalize_dd5983a.css~v=1.2.0.css" />
+          href="../static/css/common/normalize_dd5983a.css~v=1.2.0.css" />
     <link rel="stylesheet"
-          href="./static/css/common/public_2347803.css~v=1.2.0.css" />
+          href="../static/css/common/public_2347803.css~v=1.2.0.css" />
     <link rel="stylesheet"
-          href="./static/css/web/account/login_704b305.css~v=1.2.0.css" />
+          href="../static/css/web/account/login_704b305.css~v=1.2.0.css" />
     <link rel="stylesheet"
-          href="./static/css/web/account/forget_8985893.css~v=1.2.0.css" />
+          href="../static/css/web/account/forget_8985893.css~v=1.2.0.css" />
     <script type="text/javascript"
-            src="./static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
+            src="../static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
     <script type="text/javascript"
-            src="./static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
-    <script type="text/javascript" src="static/js/common/common.js"></script>
+            src="../static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
+    <script type="text/javascript" src="../static/js/common/common.js"></script>
     <!-- Google Fonts-->
     <script>
 //        $(function(){
@@ -87,7 +87,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index2.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
+                <a class="navbar-brand" href="../index2.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -96,7 +96,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="regist.jsp"><i class="fa fa-user fa-fw"></i>信息维护</a>
+                        <li><a href="../regist.jsp"><i class="fa fa-user fa-fw"></i>信息维护</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="/logout1"><i class="fa fa-sign-out fa-fw"></i>退出</a>
@@ -172,7 +172,7 @@
 </c:if>
 <c:if test="${empty username}">
     <div>
-        <h1>你没有<a href="login.jsp">登录</a></h1>
+        <h1>你没有<a href="../login.jsp">登录</a></h1>
     </div>
 </c:if>
         <!-- /. PAGE WRAPPER  -->
@@ -180,24 +180,24 @@
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 	 
     <!-- Metis Menu Js -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="../assets/js/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
-    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/js/morris/morris.js"></script>
+    <script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../assets/js/morris/morris.js"></script>
 	
 	
-	<script src="assets/js/easypiechart.js"></script>
-	<script src="assets/js/easypiechart-data.js"></script>
+	<script src="../assets/js/easypiechart.js"></script>
+	<script src="../assets/js/easypiechart-data.js"></script>
 	
-	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+	 <script src="../assets/js/Lightweight-Chart/jquery.chart.js"></script>
 	
     <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="../assets/js/custom-scripts.js"></script>
 
 
 </body>

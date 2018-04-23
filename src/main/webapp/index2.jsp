@@ -42,7 +42,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="repwd.jsp"><i class="fa fa-user fa-fw"></i>修改密码</a>
+                        <li><a href="test/repwd.jsp"><i class="fa fa-user fa-fw"></i>修改密码</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="/logout1"><i class="fa fa-sign-out fa-fw"></i>退出</a>

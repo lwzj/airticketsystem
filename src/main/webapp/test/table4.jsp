@@ -1,5 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,38 +8,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 	<!-- Bootstrap Styles-->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     <script type="text/javascript"
-            src="static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
+            src="../static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
     <script type="text/javascript"
-            src="static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
+            src="../static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
      <!-- Morris Chart Styles-->
 
         <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <%--<link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />--%>
      <!-- TABLE STYLES-->
-    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <script type="text/javascript" src="static/js/common/common.js"></script>
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../static/js/common/common.js"></script>
     <script type="text/javascript">
-        function queryPark() {
-            var list = "";
+        $(function(){
+            $("#search").bind("input propertychange",function () {
+                searcher();
+            });
+        })
+        function searcher() {
+            var s = $('#search');
+            var data = "{'param':'"+s+"'}";
             $.ajax({
-                url: URL + "admin/queryParking",
+                url : URL+"admin/queryBySome",
                 type : "POST",
-                success: function (data) {
+                data : "data="+data,
+                success : function (data) {
                     if (data.code == 200) {
                         var n = data.size;
                         for (var i = 0; i < n; i++) {
                             var o = data.parks[i];
                             var start = new Date(o.startpark.time);
+                            var end = new Date(o.endpark.time);
                             list += "<tr class=\"odd gradeX\"><td>" + o.stationid + "</td>\n" +
-                                "<td>" + o.carId + "</td>\n" +
-                                "<td>" + start.pattern("yyyy-MM-dd HH:mm:ss") + "</td>\n"
+                                "<td>" + o.cardid + "</td>\n" +
+                                "<td>" + start.pattern("yyyy-MM-dd HH:mm:ss") + "</td>\n" +
+                                "<td class=\"center\">" + end.pattern("yyyy-MM-dd HH:mm:ss")+ "</td>\n" +
+                                "<td class=\"center\">" + o.fee + "</td></tr>"
+                        }
+                        $("#parkList").append(list);
+                    }
+                },
+                dataType : "json",
+            });
+        }
+        function queryPark() {
+            var list = "";
+            $.ajax({
+                url: URL + "admin/queryCharger",
+                type : "POST",
+                success: function (data) {
+                    if (data.code == 200) {
+                        var n = data.size;
+                        for (var i = 0; i < n; i++) {
+                            var o = data.chargers[i];
+                            list += "<tr class=\"odd gradeX\"><td>" + carType(o.cardtype) + "</td>\n" +
+                                "<td>" + stationType(o.stationtype) + "</td>\n" +
+                                "<td>" + o.charge + "</td>"
                         }
                         $("#parkList").append(list);
                     }else{
@@ -52,7 +82,7 @@
     </script>
 </head>
 <body onload="queryPark()">
-<c:if test="${not empty username}">
+<c:if test="${not empty admin}">
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -62,7 +92,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index2.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
+                <a class="navbar-brand" href="../index.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -71,12 +101,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>信息维护</a>
+                        <li><a href="../regist.jsp"><i class="fa fa-user fa-fw"></i>信息维护</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>系统管理</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/logout1"><i class="fa fa-sign-out fa-fw"></i>退出</a>
+                        <li><a href="/logout2"><i class="fa fa-sign-out fa-fw"></i>退出</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -90,26 +120,26 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index2.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="../index.jsp"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
 
                     <li>
-                        <a href="table11.jsp"><i class="fa fa-table"></i> 出入场信息</a>
+                        <a href="../table1.jsp"><i class="fa fa-table"></i> 出入场信息</a>
                     </li>
                     <li>
-                        <a href="table22.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
+                        <a href="../table2.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
                     </li>
                     <li>
-                        <a href="table33.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
+                        <a href="table3.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
                     </li>
                     <li>
-                        <a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>
+                        <a href="table4.jsp" class="active-menu"><i class="fa fa-table"></i> 收费标准 </a>
                     </li>
                     <li>
-                        <a href="table55.jsp" class="active-menu"><i class="fa fa-table"></i> 当前在场信息 </a>
+                        <a href="table5.jsp"><i class="fa fa-table"></i> 当前在场信息 </a>
                     </li>
                     <li>
-                        <a href="table66.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>
+                        <a href="table6.jsp"><i class="ffa fa-table"></i> 当前可用车位信息</a>
                     </li>
                         </ul>
                     </li>
@@ -125,7 +155,7 @@
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            出入场信息 <small>Admission information</small>
+                            收费信息 <small>Charge information</small>
                         </h1>
                     </div>
                 </div>
@@ -136,7 +166,7 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             车位情况
+                             收费标准
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -148,9 +178,9 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>车位号</th>
-                                            <th>车牌号</th>
-                                            <th>停车开始时间</th>
+                                            <th>车卡类型</th>
+                                            <th>车位类型</th>
+                                            <th>价格</th>
                                         </tr>
                                     </thead>
                                     <tbody id="parkList">
@@ -172,27 +202,28 @@
              <!-- /. PAGE INNER  -->
             </div>
 </c:if>
-<c:if test="${empty username}">
-    <div>
-        <h1>你没有<a href="login.jsp">登录</a></h1>
-    </div>
+<c:if test="${empty admin}">
+    你的权限不足或者没有<<a href="../login_manager.jsp">登录</a>
 </c:if>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/jquery-1.10.2.js"></script>
       <!-- Bootstrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="../assets/js/jquery.metisMenu.js"></script>
      <!-- DATA TABLE SCRIPTS -->
     <%--<script src="assets/js/dataTables/jquery.dataTables.js"></script>--%>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
     </script>
          <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="../assets/js/custom-scripts.js"></script>
 
 
 </body>

@@ -17,4 +17,7 @@ public interface IFlightDao {
     void updateFlight(Map<String, Object> param);
 
 
+    void deleteFlight(Map<String, Object> param);
+
+    List<Flight> findAll();
 }

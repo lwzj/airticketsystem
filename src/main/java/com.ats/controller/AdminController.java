@@ -1,8 +1,11 @@
 package com.ats.controller;
 
 import com.ats.bean.Admin;
+import com.ats.bean.Flight;
+import com.ats.bean.Message;
 import com.ats.service.IAdminService;
 import com.ats.service.IFlightService;
+import com.ats.service.IMessageService;
 import com.ats.utils.JsonUtil;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +28,8 @@ public class AdminController {
     private IAdminService adminService;
     @Autowired
     private IFlightService flightService;
+    @Autowired
+    private IMessageService messageService;
     /**
      * 登陆
      */
@@ -70,4 +76,60 @@ public class AdminController {
         }
         return obj;
     }
+
+    /**
+     * 查看意见
+     */
+    @RequestMapping("queryMessage")
+    @ResponseBody
+    public JSONObject queryMessage(HttpServletRequest request) {
+//        String data = request.getParameter("data");
+        JSONObject obj = new JSONObject();
+//        Map<String, Object> param = JsonUtil.getMapFromJson(data);
+        List<Message> messages = messageService.queryAll();
+        if (messages.size() != 0) {
+            obj.put("code", 200);
+            obj.put("size", messages.size());
+            obj.put("messages", messages);
+        }else{
+            obj.put("code", 100);
+            obj.put("message", "没有反馈意见");
+        }
+        return obj;
+    }
+
+    /**
+     * 查询航班
+     */
+    @RequestMapping("queryFlight")
+    @ResponseBody
+    public JSONObject queryFlight(HttpServletRequest request) {
+//        String data = request.getParameter("data");
+        JSONObject obj = new JSONObject();
+//        Map<String, Object> param = JsonUtil.getMapFromJson(data);
+        List<Flight> flights = flightService.findAll();
+        if (flights.size() != 0) {
+            obj.put("code", 200);
+            obj.put("flights", flights);
+            obj.put("size", flights.size());
+        } else {
+            obj.put("code", 100);
+            obj.put("message", "查无此航班！");
+        }
+        return obj;
+    }
+    /**
+     * 查询航班
+     */
+    @RequestMapping("delete")
+    @ResponseBody
+    public JSONObject deleteFlihrt(HttpServletRequest request) {
+        String data = request.getParameter("data");
+        JSONObject obj = new JSONObject();
+        Map<String, Object> param = JsonUtil.getMapFromJson(data);
+        flightService.deleteById(param);
+        obj.put("code", 200);
+        return obj;
+    }
+
 }

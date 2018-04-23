@@ -17,4 +17,22 @@
         WHERE
         `phone` = #{phone} AND `password` = #{password};
     </select>
+
+    <insert id="addUser" parameterType="java.util.Map">
+        insert into `user` (
+  `phone`,
+  `password`,
+  `name`,
+  `IDcard`
+)
+values
+  (
+    #{phone},
+    #{password},
+    #{name},
+    #{IDcard}
+  ) ;
+
+
+    </insert>
 </mapper>

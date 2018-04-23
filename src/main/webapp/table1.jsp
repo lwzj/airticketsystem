@@ -29,24 +29,41 @@
         function queryPark() {
             var list = "";
             $.ajax({
-                url: URL + "admin/queryPark",
+                url: URL + "admin/queryFlight",
                 type : "POST",
                 success: function (data) {
                     if (data.code == 200) {
                         var n = data.size;
                         for (var i = 0; i < n; i++) {
-                            var o = data.parks[i];
-                            var start = new Date(o.startpark.time);
-                            var end = new Date(o.endpark.time);
-                            list += "<tr class=\"odd gradeX\"><td>" + o.stationid + "</td>\n" +
-                                "<td>" + o.carId + "</td>\n" +
-                                "<td>" + start.pattern("yyyy-MM-dd HH:mm:ss") + "</td>\n" +
-                                "<td class=\"center\">" + end.pattern("yyyy-MM-dd HH:mm:ss")+ "</td>\n" +
-                                "<td class=\"center\">" + o.fee + "</td></tr>"
+                            var o = data.flights[i];
+                            list += "<tr class=\"odd gradeX\"><td>" + o.flightId + "</td>\n" +
+                                "<td>" + o.takeoffTime + "</td>\n" +
+                                "<td>" + o.landingTime + "</td>\n" +
+                                "<td class=\"center\">" + o.price + "</td>\n" +
+                                "<td class=\"center\">" + o.takeoffCity + "</td>\n" +
+                                "<td class=\"center\">" + o.landingCity + "</td>\n" +
+                                "<td class=\"center\">" + o.num + "</td>\n" +
+                                "<td class=\"center\"><input value='删除' id='flight_" + o.id + "' type='button' onclick='de(" + o.id + ")' /> </td></tr>"
                         }
                         $("#parkList").append(list);
                     }else{
-                        alert(data.message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+        function de(id) {
+            var data = "{'id':'"+id+"'}";
+            $.ajax({
+                url: URL + "admin/delete",
+                type : "POST",
+                data : "data="+data,
+                success: function (data) {
+                    if (data.code == 200) {
+                        window.location.reload();
+                    }else{
+                        alert("删除失败！");
                     }
                 },
                 dataType: "json"
@@ -151,11 +168,14 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>车位号</th>
-                                            <th>车牌号</th>
-                                            <th>停车开始时间</th>
-                                            <th>停车结束时间</th>
-                                            <th>停车的收费</th>
+                                            <th>航班号</th>
+                                            <th>起飞时间</th>
+                                            <th>到达时间</th>
+                                            <th>票价</th>
+                                            <th>出发地</th>
+                                            <th>目的地</th>
+                                            <th>剩余票数</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody id="parkList">

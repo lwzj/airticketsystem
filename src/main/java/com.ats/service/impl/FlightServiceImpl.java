@@ -22,4 +22,13 @@ public class FlightServiceImpl implements IFlightService {
         int m = flightDao.addFlight(param);
         return m;
     }
+
+    public void deleteById(Map<String, Object> param) {
+        flightDao.deleteFlight(param);
+    }
+
+    public List<Flight> findAll() {
+        return flightDao.findAll();
+    }
+
 }

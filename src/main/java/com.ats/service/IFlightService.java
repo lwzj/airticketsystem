@@ -9,4 +9,8 @@ public interface IFlightService {
     List<Flight> findById(Map<String, Object> param);
 
     int add(Map<String, Object> param);
+
+    void deleteById(Map<String, Object> param);
+
+    List<Flight> findAll();
 }

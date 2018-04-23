@@ -8,23 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 	<!-- Bootstrap Styles-->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     <script type="text/javascript"
-            src="static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
+            src="../static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
     <script type="text/javascript"
-            src="static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
+            src="../static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
      <!-- Morris Chart Styles-->
 
         <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <%--<link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />--%>
      <!-- TABLE STYLES-->
-    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <script type="text/javascript" src="static/js/common/common.js"></script>
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../static/js/common/common.js"></script>
     <script type="text/javascript">
         $(function(){
             $("#search").bind("input propertychange",function () {
@@ -92,7 +92,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index2.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
+                <a class="navbar-brand" href="../index2.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -120,17 +120,17 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index2.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="../index2.jsp"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
 
                     <li>
-                        <a href="table11.jsp"><i class="fa fa-table"></i> 出入场信息</a>
+                        <a href="../table11.jsp"><i class="fa fa-table"></i> 出入场信息</a>
                     </li>
                     <li>
-                        <a href="table22.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
+                        <a href="../table22.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
                     </li>
                     <li>
-                        <a href="table33.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
+                        <a href="../table33.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
                     </li>
                     <li>
                         <a href="table44.jsp" class="active-menu"><i class="fa fa-table"></i> 收费标准 </a>
@@ -204,25 +204,25 @@
 </c:if>
 <c:if test="${empty username}">
     <div>
-        <h1>你没有<a href="login.jsp">登录</a></h1>
+        <h1>你没有<a href="../login.jsp">登录</a></h1>
     </div>
 </c:if>
     <!-- jQuery Js -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/jquery-1.10.2.js"></script>
       <!-- Bootstrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="../assets/js/jquery.metisMenu.js"></script>
      <!-- DATA TABLE SCRIPTS -->
     <%--<script src="assets/js/dataTables/jquery.dataTables.js"></script>--%>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
     </script>
          <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="../assets/js/custom-scripts.js"></script>
 
 
 </body>

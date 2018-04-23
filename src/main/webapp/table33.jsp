@@ -26,7 +26,24 @@
     <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <script type="text/javascript" src="static/js/common/common.js"></script>
     <script type="text/javascript">
-
+        function submiting() {
+            var message = $('#opinion').val();
+            var data = "{'message':'"+message+"'}";
+            $.ajax({
+                url: URL+"user/feedback",
+                type: "POST",
+                data: "data=" + data,
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert("反馈成功！")
+                        $('#opinion').attr("value", "");
+                    } else {
+                        alert("反馈失败！")
+                    }
+                },
+                dataType: "json",
+            });
+        }
     </script>
 </head>
 <body >
@@ -75,10 +92,10 @@
                         <a href="table11.jsp"><i class="fa fa-table"></i> 航班信息</a>
                     </li>
                     <li>
-                        <a href="table22.jsp" class="active-menu"><i class="fa fa-table"></i> 订单信息 </a>
+                        <a href="table22.jsp" ><i class="fa fa-table"></i> 订单信息 </a>
                     </li>
                     <li>
-                        <a href="table33.jsp"><i class="fa fa-table"></i> 意见反馈 </a>
+                        <a href="table33.jsp" class="active-menu"><i class="fa fa-table"></i> 意见反馈 </a>
                     </li>
                     <%--<li>--%>
                         <%--<a href="table44.jsp"><i class="fa fa-table"></i> 收费标准 </a>--%>
@@ -124,10 +141,11 @@
                                     <%--</div>--%>
                                 </div>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-
-                                    <tbody id="parkList">
-
-                                    </tbody>
+                                    <tr>
+                                        <td>意见</td>
+                                        <td><textarea rows="5" cols="5" id = "opinion"></textarea></td>
+                                    </tr>
+                                    <tr><td><input type="button" onclick="submiting()" value="提交"></td></tr>
                                 </table>
                             </div>
 

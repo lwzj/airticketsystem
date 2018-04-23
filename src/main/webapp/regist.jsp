@@ -128,10 +128,10 @@
 
 
                     <li>
-                        <a href="userinfo.jsp"><i class="fa fa-table"></i> 修改密码</a>
+                        <a href="test/userinfo.jsp"><i class="fa fa-table"></i> 修改密码</a>
                     </li>
                     <li>
-                        <a href="charge.jsp"><i class="fa fa-table"></i> 用户充值 </a>
+                        <a href="test/charge.jsp"><i class="fa fa-table"></i> 用户充值 </a>
                     </li>
 
 

@@ -40,8 +40,8 @@ function login(){
 				 $.cookie('carId', data.carId);
 				 $.cookie('id', data.id);
 				 $.cookie('username', data.username);
-				 window.location.href=url;
-			 }else{
+                 window.location.href = url;
+             }else{
 				 $(".login_fall").show();
 			 }
 		 },
@@ -72,7 +72,7 @@ function login(){
 			<a href="javascript:;" id="j-login-btn" class="login_btn" onclick="login()">登录</a>
 			<div class="login_hint clearfix">
 				<!-- <a href="forget.html~forget.html" class="forget_pwd float_left">忘记密码？</a> -->
-				<%--<a href="forgotPWD.jsp" class="skip_register float_left">忘记密码?</a>--%>
+				<a href="register.jsp" class="skip_register float_left">注册</a>
 			</div>
 			<div id="j-login-fall" class="login_fall">密码错误</div>
 		</div>

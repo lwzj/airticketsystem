@@ -74,4 +74,18 @@ VALUES
     #{landingCity}
   ) ;
     </insert>
+
+    <select id="findAll" parameterType="java.util.Map" resultMap="flightResult">
+         SELECT
+        *
+        FROM
+        `flight`
+    </select>
+
+    <delete id="deleteFlight" parameterType="java.util.Map" >
+        delete
+from
+  `flight`
+where `id` = #{id} ;
+    </delete>
 </mapper>

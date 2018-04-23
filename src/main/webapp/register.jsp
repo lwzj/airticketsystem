@@ -36,7 +36,7 @@ function register(){
 	var l=$("#nickname").val();
 	var a=/^([0-9a-zA-Z]|[\u4E00-\u9FA5])*$/;
 	if(l==null || l=="")
-		return $("#register_fall").show().html("昵称不能为空"),void $("#register_btn").html("注册");l=encodeURI(l);
+		return $("#register_fall").show().html("姓名不能为空"),void $("#register_btn").html("注册");l=encodeURI(l);
 	var s=$("#register_password").val(),n=/^[\w]{6,20}$/;
 	if(!n.test(s))
 		return $("#register_fall").show().html("密码需为6-20位英文及数字"),void $("#register_btn").html("注册");
@@ -45,16 +45,17 @@ function register(){
 		return $("#register_fall").show().html("两次输入密码不一致"),void $("#register_btn").html("注册");
 	var u = $("#usertype").val();
 	var c = $("#carId").val();
-	 var data = "{'tel':"+e+",'username':'"+l+"','password':'"+s+"','carId':'"+c+"','usertype':'"+u+"'}";
+	 var data = "{'phone':"+e+",'name':'"+l+"','password':'"+s+"','IDcard':'"+c+"'}";
 	$.ajax({
-		 url: URL+"admin/register",
+		 url: URL+"user/register",
 		 type: "POST",
 		 data:'data='+data,
 		 success: function(data){
 			 if(data.code==100){
-				 alert(data.message)
+				 alert(data.message);
 			 }else{
                  alert("注册成功!")
+                 window.location.href=URL+"login.jsp";
 			 }
 		 },
 		 dataType: "json"
@@ -94,13 +95,13 @@ border:#336699 1px dashed;
 			</div>
 			<div class="register_nickname">
 				<input type="text" value="" id="nickname"
-					class="account_number account_input" placeholder="昵称"
+					class="account_number account_input" placeholder="姓名"
 					autocomplete="off" maxlength="10">
 			</div>
 			<div class="register_nickname">
 				<input type="text" value="" id="carId"
-					   class="account_number account_input" placeholder="车牌号"
-					   autocomplete="off" maxlength="10">
+					   class="account_number account_input" placeholder="身份证"
+					   autocomplete="off" maxlength="18">
 			</div>
 			<!-- <div class="login_captcha">
 				<div class="float_left captcha">
@@ -118,14 +119,6 @@ border:#336699 1px dashed;
 			<div class="login_pwd">
 				<input type="password" value="" id="register_password_repeat"
 					class="account_password_repeat account_input" placeholder="重复密码">
-			</div>
-			<div class="register_nickname">
-				<select class="register_nickname" id="usertype">
-					<option value="c1">普通会员</option>
-					<option value="c2">黄金会员</option>
-					<option value="c3">铂金会员</option>
-					<option value="c4">钻石会员</option>
-				</select>
 			</div>
 			<button  id="register_btn" class="login_btn" onclick="register()">注册</button>
 			<%--<div class="login_hint clearfix register_hint">--%>

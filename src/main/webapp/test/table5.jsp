@@ -8,23 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 	<!-- Bootstrap Styles-->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     <script type="text/javascript"
-            src="static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
+            src="../static/js/common/jquery-1.11.3.min_6163309.js~v=1.2.0"></script>
     <script type="text/javascript"
-            src="static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
+            src="../static/js/common/jquery.cookie_a5283b2.js~v=1.2.0"></script>
      <!-- Morris Chart Styles-->
 
         <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <%--<link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />--%>
      <!-- TABLE STYLES-->
-    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <script type="text/javascript" src="static/js/common/common.js"></script>
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../static/js/common/common.js"></script>
     <script type="text/javascript">
         function queryPark() {
             var list = "";
@@ -62,7 +62,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
+                <a class="navbar-brand" href="../index.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -71,7 +71,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="regist.jsp"><i class="fa fa-user fa-fw"></i>信息维护</a>
+                        <li><a href="../regist.jsp"><i class="fa fa-user fa-fw"></i>信息维护</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>系统管理</a>
                         </li>
@@ -90,14 +90,14 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="../index.jsp"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
 
                     <li>
-                        <a href="table1.jsp"><i class="fa fa-table"></i> 出入场信息</a>
+                        <a href="../table1.jsp"><i class="fa fa-table"></i> 出入场信息</a>
                     </li>
                     <li>
-                        <a href="table2.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
+                        <a href="../table2.jsp"><i class="fa fa-table"></i> 用户个人信息 </a>
                     </li>
                     <li>
                         <a href="table3.jsp"><i class="fa fa-table"></i> 用户历史信息 </a>
@@ -173,27 +173,27 @@
             </div>
 </c:if>
 <c:if test="${empty admin}">
-    你的权限不足或者没有<<a href="login_manager.jsp">登录</a>
+    你的权限不足或者没有<<a href="../login_manager.jsp">登录</a>
 </c:if>
          <!-- /. PAGE WRAPPER  -->
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/jquery-1.10.2.js"></script>
       <!-- Bootstrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="../assets/js/jquery.metisMenu.js"></script>
      <!-- DATA TABLE SCRIPTS -->
     <%--<script src="assets/js/dataTables/jquery.dataTables.js"></script>--%>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
     </script>
          <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="../assets/js/custom-scripts.js"></script>
 
 
 </body>
