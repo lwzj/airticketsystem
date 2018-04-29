@@ -118,7 +118,7 @@ public class UserController {
         if (s) {
             obj.put("code", 200);
             obj.put("message", "出票成功");
-            obj.put("id", orderNum);
+            obj.put("orderNum", orderNum);
         } else {
             obj.put("code", 100);
             obj.put("message", "出票失败,余票不足！");

@@ -98,10 +98,10 @@
                         $("#infos").hide();
                         $(".username").attr("value","");
                         $(".IDcard").attr("value","");
-                        alter(data.message+"订单号："+data.id);
+                        alert(data.message+"订单号："+data.orderNum,+"请牢记此订单号！你可以使用此订单号查询你的订单信息！！");
                     }
                     else{
-                        alter(data.message)
+                        alert(data.message)
                     }
                 },
                 dataType: "json",

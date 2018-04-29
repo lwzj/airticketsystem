@@ -63,7 +63,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp"><i class="fa fa-gear"></i> <strong>PARK</strong></a>
+                <a class="navbar-brand" href="index.jsp"><i class="fa fa-gear"></i> <strong>AIRTICKET</strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -131,7 +131,7 @@
                     <div class="col-md-12">
                         <h1 class="page-header">
                             航班管理系统
-                            <small>Parking management system.</small>
+                            <small>AIR TICKET SYSTEM.</small>
                         </h1>
                     </div>
                 </div>
