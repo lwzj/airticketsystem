@@ -53,7 +53,7 @@
                                 "<td>" + o.landingTime + "</td>\n" +
                                 "<td>" + o.takeoffCity + "</td>\n" +
                                 "<td>" + o.landingCity + "</td>\n" +
-                                "<td class=\"center\"><input type='button' onclick='tuipiao( " + o.id+ ")'/></td>\n"
+                                "<td class=\"center\"><input type='button' value='退票' onclick='tuipiao( " + o.id+ ")'/></td>\n"
                             }else{
                                 list += "<tr class=\"odd gradeX\"><td>" + o.username + "</td>\n" +
                                     "<td>" + o.IDcard + "</td>\n" +
@@ -220,7 +220,6 @@
                                             <th>出发地</th>
                                             <th>目的地</th>
                                             <th>状态</th>
-                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody id="parkList">
